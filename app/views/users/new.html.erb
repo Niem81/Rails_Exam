@@ -1,0 +1,47 @@
+<h1>Welcome</h1>
+
+<div class="center jumbotron">
+<h1>Register</h1>
+<%= form_for(@user) do |f| %>
+    
+    <% if @user.errors.any? %>
+        <ul class="Signup_Errors">
+        <% for message_error in @user.errors.full_messages %>
+          <li>* <%= message_error %></li>
+        <% end %>
+        </ul>
+    <% end %>
+
+
+	<%= f.label :first_name %><br>
+	<%= f.text_field :first_name %><br>
+
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name %><br>
+	
+	<%= f.label :email %><br>
+	<%= f.text_field :email %><br>
+
+	<%= f.label :password %><br>
+    <%= f.password_field :password%><br>
+
+    <%= f.label :password_confirmation, "Password Confirmation"  %><br>
+    <%= f.password_field :password_confirmation%><br>
+
+    <%= f.submit "Join" %>
+<% end %>
+</div>
+
+<div class="center jumbotron">
+<h1>Login</h1>
+<%= form_for(:session , url: login_path) do |f| %>
+
+	<%= f.label :email %><br>
+	<%= f.text_field :email %><br>
+
+	<%= f.label :password %><br>
+	<%= f.password_field :password%><br>
+
+    <%= f.submit "Log In" %>
+<% end %>
+</div>

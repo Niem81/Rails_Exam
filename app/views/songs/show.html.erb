@@ -1,0 +1,20 @@
+
+<h3>Others who added <%= @song.artist + " - "+ @song.title%></h3>
+
+<table>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Times Added</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @song.users.group(:id).select("users.*, count(users.id)").each do |f| %>
+			<tr>
+				<td><%= f.first_name%></td>
+				<td><%= f.count%></td>
+			</tr>
+		<% end %>
+	</tbody>
+
+</table>
