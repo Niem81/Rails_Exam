@@ -1,14 +1,15 @@
 class UsersController < ApplicationController
 
  	before_action :require_login, except: [:new, :create]
-	before_action :require_correct_user, only: [:show, :edit, :update, :destroy]
+	before_action :require_correct_user, only: [:show]
 
 	def index
 		redirect_to '/main'
 	end
 
 	def show
-		@user = current_user
+		@user = User.find(params[:id])
+		@user = current_user unless @user
 	end
 
 	def create

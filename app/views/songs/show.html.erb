@@ -11,7 +11,7 @@
 	<tbody>
 		<% @song.users.group(:id).select("users.*, count(users.id)").each do |f| %>
 			<tr>
-				<td><%= f.first_name%></td>
+				<td><a href="/users/<%= f.id%>"> <%= f.first_name%></a></td>
 				<td><%= f.count%></td>
 			</tr>
 		<% end %>

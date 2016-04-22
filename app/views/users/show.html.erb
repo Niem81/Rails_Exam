@@ -1,5 +1,5 @@
 
-<h2><%= current_user.first_name%>'s Playlist</h2>
+<h2><%= @user.first_name%>'s Playlist</h2>
 
 <table>
 	<thead>
@@ -10,7 +10,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<% current_user.songs_added.group(:id).select("songs.*, count(songs.artist)").each do |s| %>
+		<% @user.songs_added.group(:id).select("songs.*, count(songs.artist)").each do |s| %>
 			<tr>
 				<td><%= s.artist%></td>
 				<td><%= s.title%></td>

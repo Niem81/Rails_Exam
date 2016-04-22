@@ -10,12 +10,10 @@ class SongsController < ApplicationController
 
   	def create
 	  	@user = current_user
-	  	@user.songs.create(artist: params[:song][:artist], title: params[:song][:title], user:current_user)
+	  	@song = @user.songs.new(artist: params[:song][:artist], title: params[:song][:title], user:current_user)
+	  	unless @song.save
+  			flash[:errors] = @song.errors.full_messages
+  		end
 	  	redirect_to '/songs'
-	end
-	def destroy
-	  	secret = Secret.find(params[:id])
-	  	secret.destroy if secret.user == current_user
-	  	redirect_to current_user#@user
 	end
 end
